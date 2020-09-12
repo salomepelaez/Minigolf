@@ -4,14 +4,14 @@ using UnityEngine;
 public class ForceModifier : MonoBehaviour
 {
     [SerializeField] private Transform  m_marker    = null;
-    [SerializeField] private float      m_range     = 100;
-    [SerializeField] private float      m_speed     = 0;
+    [SerializeField] private float      m_range     = 100.0f;
+    [SerializeField] private float      m_speed     = 0.0f;
 
     public Action<float> onComplete = null;
 
     private bool    m_play  = false;
     private int     m_dir   = 1;
-    private float   m_angle = 0;
+    private float   m_angle = 0.0f;
 
     private void Awake()
     {
@@ -42,10 +42,10 @@ public class ForceModifier : MonoBehaviour
 
     private float WrapAngle(float angle)
     {
-        angle %= 360;
+        angle %= 360.0f;
 
-        if (angle > 180)
-            return angle - 360;
+        if (angle > 180.0f)
+            return angle - 360.0f;
 
         return angle;
     }

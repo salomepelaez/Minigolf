@@ -53,7 +53,7 @@ public class AimingSystem : MonoBehaviour
     private void UpdateLine()
     {
         m_lineRender.SetPosition(0, transform.position);
-        m_lineRender.SetPosition(1, GetMousePosition( Mathf.Abs(Camera.main.transform.position.z - transform.position.z)));
+        m_lineRender.SetPosition(1, GetMousePosition( 1.0f));
     }
 
     private void OnBeginDrag(PointerEventData data)
@@ -63,9 +63,12 @@ public class AimingSystem : MonoBehaviour
     private void OnDrag(PointerEventData data)
     {
         UpdateLine();
+        m_currentBall.visualObject.transform.position = GetMousePosition(Mathf.Abs(Camera.main.transform.position.z - transform.position.z));
     }
     private void OnEndDrag(PointerEventData data)
     {
+        m_currentBall.visualObject.gameObject.SetActive(false);
+        
         // Limpiamos la linea
         m_lineRender.positionCount = 0;
 
@@ -86,18 +89,9 @@ public class AimingSystem : MonoBehaviour
             m_currentBall.rb.AddForce(dir * m_force, ForceMode.Impulse);
             m_currentBall.constanForce.force = new Vector3(v * m_currentBall.force * -1.0f, 0.0f, 0.0f);
 
-            ShootBall(v, dir);
-        });
-    }
+            StartCoroutine(CO_CreateBallAfter(m_timeToCreate));
 
-    private void ShootBall(float v, Vector3 dir)
-    {
-        // hit ball
-        m_currentBall.rb.useGravity = true;
-        m_currentBall.rb.AddForce(dir * m_force, ForceMode.Impulse);
-        m_currentBall.constanForce.force = new Vector3(v * m_currentBall.force * -1.0f, 0.0f, 0.0f);
-
-        StartCoroutine(CO_CreateBallAfter(m_timeToCreate));
+        } );
     }
 
     private IEnumerator CO_CreateBallAfter(float t)

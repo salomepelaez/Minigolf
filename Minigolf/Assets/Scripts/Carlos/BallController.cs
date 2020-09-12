@@ -23,15 +23,16 @@ public class BallController : MonoBehaviour
     public ConstantForce        constanForce        { get { return m_constanForce;      } }
     public ForceModifier        forceModifier       { get { return m_forceModifier;     } }
     public float                force               { get { return m_force;             } }
+    public Transform            visualObject        { get { return m_visualObject;      } }
 
     private void Awake()
     {
         m_dragListener      = GetComponent<DragListener>();
         m_collisionListener = GetComponent<CollisionListener>();
         m_rb                = GetComponent<Rigidbody>();
-        m_constanForce     = GetComponent<ConstantForce>();
+        m_constanForce      = GetComponent<ConstantForce>();
 
-        m_constanForce.force   = Vector3.zero;
+        m_constanForce.force    = Vector3.zero;
         m_rb.useGravity         = false;
     }
 }
