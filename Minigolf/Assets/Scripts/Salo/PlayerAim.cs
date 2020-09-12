@@ -9,7 +9,7 @@ public class PlayerAim : MonoBehaviour
 
     float sensitivity = 40.0f;
 
-    public Transform target, player;
+    public Transform target;
 
     void Start()
     {
@@ -34,12 +34,6 @@ public class PlayerAim : MonoBehaviour
         {
             target.rotation = Quaternion.Euler(mouseY, mouseX, 0);
             Debug.Log("si");
-        }
-
-        else
-        {
-            target.rotation = Quaternion.Euler(mouseY, mouseX, 0);
-            player.rotation = Quaternion.Euler(0, mouseX, 0);
         }
     }
 }
