@@ -8,6 +8,7 @@ using UnityEngine.EventSystems;
 [RequireComponent(typeof(ConstantForce))]
 public class BallController : MonoBehaviour
 {
+    [SerializeField] private float          m_force         = 0.0f;
     [SerializeField] private Transform      m_visualObject  = null;
     [SerializeField] private ForceModifier  m_forceModifier = null;
     
@@ -21,6 +22,7 @@ public class BallController : MonoBehaviour
     public Rigidbody            rb                  { get { return m_rb;                } }
     public ConstantForce        constanForce        { get { return m_constanForce;      } }
     public ForceModifier        forceModifier       { get { return m_forceModifier;     } }
+    public float                force               { get { return m_force;             } }
 
     private void Awake()
     {

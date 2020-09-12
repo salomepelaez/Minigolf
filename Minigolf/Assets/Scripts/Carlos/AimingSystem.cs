@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.EventSystems;
 
 [RequireComponent(typeof(LineRenderer))]
@@ -79,7 +81,28 @@ public class AimingSystem : MonoBehaviour
 
         m_currentBall.forceModifier.Play(delegate (float v)
         {
+            // hit ball
+            m_currentBall.rb.useGravity = true;
+            m_currentBall.rb.AddForce(dir * m_force, ForceMode.Impulse);
+            m_currentBall.constanForce.force = new Vector3(v * m_currentBall.force * -1.0f, 0.0f, 0.0f);
 
+            ShootBall(v, dir);
         });
+    }
+
+    private void ShootBall(float v, Vector3 dir)
+    {
+        // hit ball
+        m_currentBall.rb.useGravity = true;
+        m_currentBall.rb.AddForce(dir * m_force, ForceMode.Impulse);
+        m_currentBall.constanForce.force = new Vector3(v * m_currentBall.force * -1.0f, 0.0f, 0.0f);
+
+        StartCoroutine(CO_CreateBallAfter(m_timeToCreate));
+    }
+
+    private IEnumerator CO_CreateBallAfter(float t)
+    {
+        yield return new WaitForSeconds(t);
+        PrepareBall();
     }
 }
