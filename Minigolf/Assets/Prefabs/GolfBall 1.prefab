@@ -187,8 +187,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_marker: {fileID: 397971140}
-  m_range: 100
-  m_speed: 10
+  m_range: 70
+  m_speed: 70
 --- !u!1 &629898364089082743
 GameObject:
   m_ObjectHideFlags: 0
@@ -355,7 +355,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_force: 0
   m_visualObject: {fileID: 3181402095530709092}
-  m_forceModifier: {fileID: 0}
+  m_forceModifier: {fileID: 1596053804432243642}
 --- !u!1001 &3181402095530866054
 PrefabInstance:
   m_ObjectHideFlags: 0

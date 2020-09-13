@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 419298}
   - component: {fileID: 3333368}
   - component: {fileID: 2332044}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: pref_Golfball_06
   m_TagString: Untagged
   m_Icon: {fileID: 0}

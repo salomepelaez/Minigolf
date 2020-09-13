@@ -36,7 +36,7 @@ public class AimingSystem : MonoBehaviour
 
         ball.collisionListener.onCollisionEnter += delegate
         {
-            ball.constanForce.force = Vector3.zero;
+            ball.constantForce.force = Vector3.zero;
         };
 
         m_currentBall = ball;
@@ -87,7 +87,7 @@ public class AimingSystem : MonoBehaviour
             // hit ball
             m_currentBall.rb.useGravity = true;
             m_currentBall.rb.AddForce(dir * m_force, ForceMode.Impulse);
-            m_currentBall.constanForce.force = new Vector3(v * m_currentBall.force * -1.0f, 0.0f, 0.0f);
+            m_currentBall.constantForce.force = new Vector3(v * m_currentBall.force * -1.0f, 0.0f, 0.0f);
 
             StartCoroutine(CO_CreateBallAfter(m_timeToCreate));
 
